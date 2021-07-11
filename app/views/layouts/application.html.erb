@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PrivateEvents</title>
+    <name>PrivateEvents</name>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <nav>
+    <% if user_signed_in? %>
+        <%= link_to  "Log out",  destroy_user_session_path, method: :delete %>
+        <p>Logged in as <%=link_to current_user.username, '/users/' + current_user.id.to_s %></p>
+    <% else %>
+        <%= link_to  "Log in",  new_user_session_path%>
+        <%= link_to  "Sign up",  new_user_registration_path%>
+    <% end %>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

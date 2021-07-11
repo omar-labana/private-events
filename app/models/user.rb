@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_many :attendances, dependent: :delete_all
   # not sure what it does
   has_many :attended_events, through: :attendances, source: :event
-
 end

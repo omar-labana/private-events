@@ -16,3 +16,11 @@
 <%=link_to "Back", :back%>
 <br/>
 
+<% if @owner %>
+    <%= link_to "Edit", edit_event_path(@event)%>
+    <%= link_to "Delete", event_path(@event), method: :delete %>
+<% else %>
+    <% if @attending %>
+        <%= link_to  "Not going", attendance_unattend_path(current_user.id, @event.id),method: :delete%>
+    <% end %>
+<% end %>
