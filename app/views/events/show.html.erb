@@ -1,24 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @event.name %></h1>
+<h2>By <%=link_to"#{@user.username}", '/users/' + @user.id.to_s %> <h2>
+<p>Date: <%= @event.date.to_date%> </p>
+<p>Time: <%= @event.date.strftime("%I:%M%p")%> </p>
+<p>Where?: <%= @event.location%> </p>
+<h2>Attendees List</h2>
+<table>
+    <%@attendees.each do |attendee|%>
+            <tr>
+                <td><%= attendee.username%></td>
+            </tr>
+    <%end%>
+</table>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<%=link_to "Home", root_path%>
+<%=link_to "Back", :back%>
+<br/>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
