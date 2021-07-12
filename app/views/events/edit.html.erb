@@ -1,14 +1,14 @@
 <h1>Edit Event:</h1>
 
-
+<%=link_to "Home", root_path%>
+<%=link_to "Back", :back%>
 <%= render 'form', event: @event%>
 <h3>Attendees</h3>
     <%@invited.each do |attendee| %>
        <p><%=attendee.username%><%= link_to "Uninvite", attendance_destroy_path(attendee.id,@event.id),method: :delete%></p>
     <%end%>
 <h3>Invite friends</h3>
+<h2>Click invite next to each user name to invite him/her.</h2>
     <%@uninvited.each do |attendee| %>
        <p><%=attendee.username%><%= link_to "Invite", create_attendance_path(attendee.id,@event.id),method: :post%></p>
     <%end%>
-<%=link_to "Home", root_path%>
-<%=link_to "Back", :back%>
