@@ -1,3 +1,5 @@
+<%=link_to "Home", root_path%>
+<%=link_to "Back", :back%>
 <h1><%= @event.name %></h1>
 <h2>By <%=link_to"#{@user.username}", '/users/' + @user.id.to_s %> <h2>
 <p>Date: <%= @event.date.to_date%> </p>
@@ -12,8 +14,7 @@
     <%end%>
 </table>
 
-<%=link_to "Home", root_path%>
-<%=link_to "Back", :back%>
+
 <br/>
 
 <% if @owner %>
