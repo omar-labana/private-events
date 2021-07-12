@@ -17,6 +17,9 @@ class EventsController < ApplicationController
   def index
     @events = Event.all.order(:date)
     @users = User.all
+    # but they already exist for each user?
+    @past_events = previous_events
+    @upcoming_events = upcoming_events
   end
 
   def show
@@ -54,5 +57,13 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :date, :location)
+  end
+
+  def previous_events
+    Event.where('date < ?', Time.now)
+  end
+
+  def upcoming_events
+    Event.where('date >= ?', Time.now)
   end
 end
