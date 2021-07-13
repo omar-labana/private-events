@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 class UserTest < ActiveSupport::TestCase
-
   dummy_user = { username: 'omar', email: 'omar@ramo.com', password: 'omaruramo',
                  password_confirmation: 'omaruramo' }
   invalid_dummy_user = { username: 'aa', email: '@aa', password: 'pass', password_confirmation: 'omaruramo' }
