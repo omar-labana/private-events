@@ -16,7 +16,7 @@ class EventTest < ActiveSupport::TestCase
       it 'checks for invalid entries' do
         user1 = User.new(dummy_user)
         user1.save
-        invalid_event = Event.new(name: 'asdasd', date: Time.now, location: 's', creator_id: user1.id)
+        invalid_event = Event.new(name: '', date: Time.now, location: 's', creator_id: user1.id)
         expect(invalid_event.valid?).to eq(false)
       end
       it 'checks associations' do

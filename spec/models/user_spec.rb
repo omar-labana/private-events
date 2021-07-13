@@ -18,10 +18,8 @@ class UserTest < ActiveSupport::TestCase
       it 'return correct error output' do
         invalid_user = User.new(invalid_dummy_user)
         invalid_user.valid?
-        error_msgs = ['Email is invalid',
-                      'Password confirmation doesn\'t match Password',
-                      'Password is too short (minimum is 6 characters)',
-                      'Username is too short (minimum is 3 characters)']
+        error_msgs = ['Username is too short (minimum is 3 characters)', 'Email is invalid',
+                      'Password is too short (minimum is 6 characters)', "Password confirmation doesn't match Password"]
         expect(invalid_user.errors.full_messages).to eq(error_msgs)
       end
       it 'return correct error output if user exists' do
@@ -33,7 +31,7 @@ class UserTest < ActiveSupport::TestCase
         User.create(dummy_user)
         user1 = User.new(dummy_user)
         user1.valid?
-        expect(user1.errors.full_messages).to eq(['Email has already been taken', 'Username has already been taken'])
+        expect(user1.errors.full_messages).to eq(['Username has already been taken', 'Email has already been taken'])
       end
     end
   end
