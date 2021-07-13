@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  validates :title, presence: true, length: { in: 4..50 }
+  validates :name, presence: true, length: { in: 4..50 }
   validates :location, presence: true, length: { maximum: 30 }
   validates :date, presence: true
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 class EventTest < ActiveSupport::TestCase
   dummy_user = { username: 'omar', email: 'ramo@omar.com', password: 'omaruramo',
                  password_confirmation: 'omaruramo' }
-  dummy_event = { title: 'ramo\'s poolpart!', date: Time.now, location: 'giza' }
+  dummy_event = { name: 'ramo\'s poolpart!', date: Time.now, location: 'giza' }
 
   RSpec.describe Event do
     context 'checks for valid data' do
@@ -16,7 +16,7 @@ class EventTest < ActiveSupport::TestCase
       it 'checks for invalid entries' do
         user1 = User.new(dummy_user)
         user1.save
-        invalid_event = Event.new(title: 'asdasd', date: Time.now, location: 's', creator_id: user1.id)
+        invalid_event = Event.new(name: 'asdasd', date: Time.now, location: 's', creator_id: user1.id)
         expect(invalid_event.valid?).to eq(false)
       end
       it 'checks associations' do
