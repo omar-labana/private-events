@@ -1,0 +1,23 @@
+<%= form_with(model: event) do |f| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.each do |error| %>
+          <li class="danger"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :name, "name:" %>
+  <%= f.text_field :name %>
+  <br/>
+  <%= f.label :date, "Date:" %>
+  <%= f.date_field :date %>
+  <br/>
+  <%= f.label :location, "Where?:" %>
+  <%= f.text_field :location %>
+  <br/>
+  <%= f.submit %>
+<% end %>

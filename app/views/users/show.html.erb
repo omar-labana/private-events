@@ -1,0 +1,96 @@
+<%=link_to "Back", :back%>
+<%=link_to "Home", root_path%>
+<h1><%= @user.username %>'s Profile</h1>
+<h2>Events Attendances</h2>
+
+            <table> 
+                <tr>
+                    <th>Previously attended events</th>
+                </tr>
+                <tr>
+                    <th>name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Event's Creator</th>
+                </tr>
+                <%@past_attended_events.each do |event|%>
+                        <tr>
+                            <td><%= event.name%></td>
+                            <td><%= event.description%></td>
+                            <td><%= event.date.to_date%></td>
+                            <td><%= event.location%></td>
+                            <td><%= event.creator.username%></td>
+                            <td><%= link_to "See more", event_path(event)%>
+                        </tr>
+                <%end%>
+            </table>
+
+            <table>
+                <tr>
+                    <th>Upcoming events</th>
+                </tr>
+                <tr>
+                    <th>name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Event's Creator</th>
+                </tr>
+                <%@upcoming_attended_events.each do |event|%>
+                        <tr>
+                            <td><%= event.name%></td>
+                            <td><%= event.description%></td>
+                            <td><%= event.date.to_date%></td>
+                            <td><%= event.location%></td>
+                            <td><%= event.creator.username%></td>
+                            <td><%= link_to "See more", event_path(event)%>
+                        </tr>
+                <%end%>
+            </table>
+<h2>Created Events</h2>
+            <table> 
+                <tr>
+                    <th>Previous events</th>
+                </tr>
+                <tr>
+                    <th>name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Event's Creator</th>
+                </tr>
+                <%@past_owned_events.each do |event|%>
+                        <tr>
+                            <td><%= event.name%></td>
+                            <td><%= event.description%></td>
+                            <td><%= event.date.to_date%></td>
+                            <td><%= event.location%></td>
+                            <td><%= link_to "See more", event_path(event)%>
+                        </tr>
+                <%end%>
+            </table>
+            <table> 
+                <tr>
+                    <th>Upcoming events</th>
+                </tr>
+                <tr>
+                    <th>name</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Event's Creator</th>
+                </tr>
+                <%@upcoming_owned_events.each do |event|%>
+                        <tr>
+                            <td><%= event.name%></td>
+                            <td><%= event.description%></td>
+                            <td><%= event.date.to_date%></td>
+                            <td><%= event.location%></td>
+                            <td><%= link_to "See more", event_path(event)%>
+                        </tr>
+                <%end%>
+            </table>
+
+
+

@@ -1,0 +1,27 @@
+<%=link_to "Home", root_path%>
+<%=link_to "Back", :back%>
+<h1><%= @event.name %></h1>
+<h2>By <%=link_to"#{@user.username}", '/users/' + @user.id.to_s %> <h2>
+<p>Date: <%= @event.date.to_date%> </p>
+<p>Time: <%= @event.date.strftime("%I:%M%p")%> </p>
+<p>Where?: <%= @event.location%> </p>
+<h2>Attendees List</h2>
+<table>
+    <%@attendees.each do |attendee|%>
+            <tr>
+                <td><%= attendee.username%></td>
+            </tr>
+    <%end%>
+</table>
+
+
+<br/>
+
+<% if @owner %>
+    <%= link_to "Edit", edit_event_path(@event)%>
+    <%= link_to "Delete", event_path(@event), method: :delete %>
+<% else %>
+    <% if @attending %>
+        <%= link_to  "Not going", attendance_unattend_path(current_user.id, @event.id),method: :delete%>
+    <% end %>
+<% end %>
